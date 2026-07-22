@@ -155,3 +155,7 @@ py maijsoft_export.py --ids-file ids.txt --batch-size 5000 --dry-run
 - 问题图片 Excel：便于人工集中复核疑似死图。
 - checkpoint JSONL：阶段性检测明细。
 - 运行日志：用于排查长任务中断、接口异常、图片解析问题。
+
+## AI 辅助说明
+
+本项目在开发过程中使用了 Claude Code 和 OpenAI Codex 提供的辅助。
