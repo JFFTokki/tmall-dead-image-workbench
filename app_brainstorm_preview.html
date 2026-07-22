@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>死图判断应用 - 初版流程草图</title>
+<style>
+:root{--ink:#1e2721;--muted:#68736b;--paper:#f7f3e8;--card:#fffdf6;--line:#d9ceb6;--green:#2f6f4e;--amber:#d98b22;--red:#c64b38;--blue:#365f7e;}
+*{box-sizing:border-box} body{margin:0;font-family:"Microsoft YaHei", "Segoe UI", sans-serif;background:radial-gradient(circle at 15% 5%,#f2e2b8 0 22%,transparent 23%),linear-gradient(135deg,#faf7ec,#edf3ed 60%,#f6eadc);color:var(--ink)}
+main{max-width:1180px;margin:0 auto;padding:34px 28px 48px}.hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:24px}.eyebrow{letter-spacing:.12em;color:var(--green);font-weight:700;font-size:13px}.hero h1{font-size:42px;line-height:1.06;margin:8px 0 10px}.hero p{margin:0;color:var(--muted);font-size:16px;max-width:690px}.badge{background:#1f3027;color:#f9efd8;border-radius:22px;padding:12px 16px;font-size:14px;box-shadow:0 12px 26px rgba(0,0,0,.12);white-space:nowrap}.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px}.panel{background:rgba(255,253,246,.88);border:1px solid var(--line);border-radius:26px;box-shadow:0 24px 55px rgba(69,55,31,.12);padding:22px}.panel h2{margin:0 0 14px;font-size:21px}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:stretch}.step{border:1px solid var(--line);background:linear-gradient(180deg,#fffdf8,#f7f0de);border-radius:18px;padding:14px;min-height:140px;position:relative}.step strong{display:block;font-size:15px;margin:8px 0}.step p{font-size:13px;line-height:1.45;margin:0;color:var(--muted)}.num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:white;background:var(--green);font-weight:800}.step:nth-child(2) .num{background:var(--blue)}.step:nth-child(3) .num{background:var(--amber)}.step:nth-child(4) .num{background:var(--red)}.step:nth-child(5) .num{background:#514637}.mockapp{border:1px solid #cbbf9f;border-radius:22px;overflow:hidden;background:#f8f3e6}.bar{height:42px;background:#21362b;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:13px}.workspace{display:grid;grid-template-columns:190px 1fr;min-height:392px}.side{background:#ede3ca;border-right:1px solid #d3c6a8;padding:16px}.side div{padding:11px 12px;border-radius:12px;margin-bottom:8px;font-size:14px}.side .active{background:#fff7df;border:1px solid #d5bd75;font-weight:700}.content{padding:18px}.drop{border:2px dashed #bfae88;border-radius:20px;background:#fffaf0;padding:22px;text-align:center;margin-bottom:14px}.drop h3{margin:0 0 8px}.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.chip{background:#eef4ed;border:1px solid #cddbcf;color:#35533d;border-radius:999px;padding:6px 10px;font-size:12px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:13px 0}.stat{background:white;border:1px solid #e1d5ba;border-radius:16px;padding:13px}.stat b{font-size:24px;display:block}.rows{display:grid;gap:8px}.row{display:grid;grid-template-columns:1fr 70px 84px;gap:8px;align-items:center;background:#fff;border:1px solid #e5dac0;border-radius:14px;padding:10px;font-size:13px}.pill{border-radius:999px;padding:5px 8px;text-align:center;font-weight:700}.dead{background:#ffe6df;color:#a73525}.review{background:#fff0ce;color:#9a620a}.ok{background:#e7f3e8;color:#2f6f4e}.options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}.option{border:1px solid var(--line);border-radius:20px;background:#fffdf6;padding:16px}.option h3{margin:0 0 8px;font-size:16px}.option p{margin:0;color:var(--muted);line-height:1.5;font-size:13px}.rec{outline:3px solid rgba(47,111,78,.22)}.note{margin-top:16px;background:#21362b;color:#f7efd9;border-radius:18px;padding:14px 16px;font-size:14px;line-height:1.55}@media(max-width:900px){.grid,.flow,.options{grid-template-columns:1fr}.hero{display:block}.badge{display:inline-block;margin-top:14px}.workspace{grid-template-columns:1fr}.side{display:flex;overflow:auto}.side div{white-space:nowrap}.hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div><div class="eyebrow">DEAD IMAGE WORKBENCH</div><h1>把“导出数据 → 判断死图 → 复核交付”做成一个电脑应用</h1><p>目标是把现在已有的核心判断能力，包装成一个不需要记命令、不怕长任务中断、能看到进度和结果的桌面工作台。</p></div>
+    <div class="badge">建议方向：流程型工作台，而不是只做一个按钮</div>
+  </section>
+  <div class="grid">
+    <section class="panel">
+      <h2>建议主流程</h2>
+      <div class="flow">
+        <div class="step"><div class="num">1</div><strong>选择来源</strong><p>输入商品 ID / 选择现有 Excel / 从掌柜软件导出。</p></div>
+        <div class="step"><div class="num">2</div><strong>导出源数据</strong><p>自动复用登录凭证或提示重新抓取，分批下载图片元数据表。</p></div>
+        <div class="step"><div class="num">3</div><strong>死图判断</strong><p>调用现有规则和学习反馈，优先减少漏判，显示实时进度。</p></div>
+        <div class="step"><div class="num">4</div><strong>人工复核</strong><p>集中看疑似/高风险项，可继续把修正喂回模型。</p></div>
+        <div class="step"><div class="num">5</div><strong>导出结果</strong><p>输出主结果 Excel、二次审核明细、运行日志和汇总数。</p></div>
+      </div>
+      <div class="options">
+        <div class="option rec"><h3>A. 推荐：本地桌面应用</h3><p>适合你当前 Windows 工作流，Python 能直接复用，UI 用轻量桌面壳。</p></div>
+        <div class="option"><h3>B. 本地网页应用</h3><p>开发快、样式灵活，但用户感知上不像“电脑软件”。</p></div>
+        <div class="option"><h3>C. 纯命令增强</h3><p>最快，但不能解决可视化进度、复核体验和非技术使用门槛。</p></div>
+      </div>
+    </section>
+    <section class="panel">
+      <h2>UI 初步感觉</h2>
+      <div class="mockapp">
+        <div class="bar"><span>死图判断工作台</span><span>学习模型：已加载</span></div>
+        <div class="workspace">
+          <div class="side"><div class="active">1 数据导出</div><div>2 图片判断</div><div>3 复核修正</div><div>4 结果交付</div></div>
+          <div class="content">
+            <div class="drop"><h3>拖入 Excel 或粘贴商品 ID</h3><div class="chips"><span class="chip">支持断点续跑</span><span class="chip">自动分批</span><span class="chip">保留日志</span></div></div>
+            <div class="stats"><div class="stat"><b>36,735</b>待检测图片</div><div class="stat"><b>4</b>图片列</div><div class="stat"><b>92%</b>当前进度</div></div>
+            <div class="rows"><div class="row"><span>最新版死图.xlsx</span><span>完成</span><span class="pill dead">死图</span></div><div class="row"><span>第 8,442 行 · pic2</span><span>待复核</span><span class="pill review">疑似</span></div><div class="row"><span>checkpoint.jsonl</span><span>已保存</span><span class="pill ok">正常</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="note">你现在可以先告诉我：这个“流程型工作台”的方向是否对？如果对，我们下一步重点拆“数据导出部分”该自动到什么程度。</div>
+    </section>
+  </div>
+</main>
+</body>
+</html>
